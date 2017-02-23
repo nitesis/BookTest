@@ -21,7 +21,7 @@ public class CardTransition : MonoBehaviour {
 		tapGesture = GetComponent<TapGesture> ();
 		tapGesture.Tapped += tappedEventHandler;
 
-		circleMask = gameObject.transform.parent.GetChild(1).gameObject;
+		circleMask = gameObject.transform.parent.Find("Card01_back").gameObject;
 		circleMaskAnimator = circleMask.GetComponent<Animator> ();
 	}
 

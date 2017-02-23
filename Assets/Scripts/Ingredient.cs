@@ -12,6 +12,7 @@ public class Ingredient : MonoBehaviour {
 
 	void Start()
 	{
+		GetComponent<Image> ().material.EnableKeyword ("_NORMALMAP");
 		image = GetComponent<Image>().sprite;
 		SetImage(image);
 
@@ -35,8 +36,12 @@ public class Ingredient : MonoBehaviour {
 
 	void ColorButton()
 	{
-		GetComponent<Image>().material.SetFloat("_GreyscaleAmount", 0f);
-		ingredientChoosen = true;
+		var image = GetComponent<Image>();
+		if (image.material.HasProperty ("_GreyscaleAmount")) 
+		{
+			image.material.SetFloat ("_GreyscaleAmount", 0f);
+			ingredientChoosen = true;
+		}
 	}
 
 	void DecolorButton()
@@ -51,6 +56,7 @@ public class Ingredient : MonoBehaviour {
 
 		var image = GetComponent<Image>();
 		var greyscaleMaterial = new Material(Shader.Find("Greyscale"));
+		//image.material.EnableKeyword("_DETAIL_MULX2");
 		greyscaleMaterial.SetFloat("_GreyscaleAmount", 1f);
 
 		image.sprite = ingredientImage;
