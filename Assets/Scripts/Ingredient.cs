@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Ingredient : MonoBehaviour {
 
 	Sprite image;
-	bool ingredientChoosed;
+	bool ingredientChoosen;
 
 
 	void Start()
@@ -20,7 +20,7 @@ public class Ingredient : MonoBehaviour {
 	public void Select()
 	{
 		//Debug.Log (ingredientChoosed);
-		if (ingredientChoosed == false) 
+		if (ingredientChoosen == false) 
 		{
 			//ColorButton();
 			StartCoroutine("ColorButton");
@@ -30,19 +30,19 @@ public class Ingredient : MonoBehaviour {
 			//DecolorButton();
 			StartCoroutine("DecolorButton");
 		}
-		Debug.Log (ingredientChoosed);
+		Debug.Log (ingredientChoosen);
 	}
 
 	void ColorButton()
 	{
 		GetComponent<Image>().material.SetFloat("_GreyscaleAmount", 0f);
-		ingredientChoosed = true;
+		ingredientChoosen = true;
 	}
 
 	void DecolorButton()
 	{
 		GetComponent<Image>().material.SetFloat("_GreyscaleAmount", 1f);
-		ingredientChoosed = false;
+		ingredientChoosen = false;
 	}
 
 	public void SetImage(Sprite ingredientImage)
